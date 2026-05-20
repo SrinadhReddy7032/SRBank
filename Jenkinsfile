@@ -25,7 +25,7 @@ pipeline {
         stage('Run Application') {
             steps {
                 bat '''
-                start cmd /c "for %%i in (target\\*.jar) do java -jar %%i"
+                start /B cmd /c "for %%i in (target\\*.jar) do java -jar %%i"
                 '''
             }
         }
