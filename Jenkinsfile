@@ -14,6 +14,14 @@ pipeline {
             }
         }
 
+        stage('Stop Old Application') {
+            steps {
+                bat '''
+                taskkill /F /IM java.exe || exit /B 0
+                '''
+            }
+        }
+
         stage('Run Application') {
             steps {
                 bat '''
