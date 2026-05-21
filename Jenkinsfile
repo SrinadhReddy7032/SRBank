@@ -21,11 +21,10 @@ pipeline {
                 '''
             }
         }
-
         stage('Run Application') {
             steps {
                 bat '''
-                start /B cmd /c "for %%i in (target\\*.jar) do java -jar %%i"
+                powershell -Command "Start-Process java -ArgumentList '-jar target\\SRBank-0.0.1-SNAPSHOT.jar'"
                 '''
             }
         }
