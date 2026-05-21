@@ -17,10 +17,11 @@ pipeline {
         stage('Stop Old Application') {
             steps {
                 bat '''
-                taskkill /F /IM java.exe || exit /B 0
+                for /f "tokens=5" %%a in ('netstat -aon ^| findstr :9090') do taskkill /F /PID %%a
                 '''
             }
         }
+
         stage('Run Application') {
             steps {
                 bat '''
